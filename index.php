@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL & ~E_NOTICE);
 
-  //website link
+
   $phone_model_data = file_get_contents("https://www.kimovil.com/en/compare-smartphones/name.samsung");
   
   $phone_model = explode('<div class="item-wrapper">',$phone_model_data);
@@ -12,10 +12,8 @@ error_reporting(E_ALL & ~E_NOTICE);
     for($i=1;$i<$array;$i++){
       //echo "$phone_model[$i]";
 
+
         
-        $link1 = explode('href="', $phone_model[$i]);
-        $link2 = explode('"', $link1[1] );
-        echo $link2[0]."</br>";
 
         $image1 = explode('src="', $phone_model[$i]);
         $image2 = explode('"', $image1[1] );
@@ -23,18 +21,18 @@ error_reporting(E_ALL & ~E_NOTICE);
 
         $model1 = explode('<span class="title">', $phone_model[$i]);
         $model2 = explode('</span>', $model1[1] );
-        echo $model2[0]."</br>";
+        echo "<h3>".$model2[0]."</h3>";
 
         $rating1 = explode('<span class="nota ki10">', $phone_model[$i]);
         $rating2 = explode('</span>', $rating1[1] );
         //echo $rating2[0]."</br>";
 
         if(!$rating2[0]){
-              echo "N/A</br>";
+              echo "<p>Rating: N/A</p>";
           }
           else{
               //echo "N/A</br>";
-            echo $rating2[0]."</br>";
+            echo "<p>Rating: ".$rating2[0]."</p>";
           }
 
 
